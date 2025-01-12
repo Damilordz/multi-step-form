@@ -38,7 +38,7 @@ This is a responsive multi-step form built as a challenge from [Frontend Mentor]
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/multi-step-form.git
+   git clone https://github.com/Damilordz/multi-step-form.git
    ```
 
 2. Navigate to the project directory:
@@ -77,4 +77,4 @@ This is a responsive multi-step form built as a challenge from [Frontend Mentor]
 
 ## Demo
 
-[Live Demo](https:demo-link.com)
+[Live Demo](https://multi-step-form-three-sandy.vercel.app/)
