@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import Title from "./components/Title";
 import Buttons from "./components/Buttons";
 import PersonalInfo from "./components/PersonalInfo";
-import SelectPlan from "./components/selectPlan";
+import SelectPlan from "./components/SelectPlan";
 import AddOns from "./components/AddOns";
 import Summary from "./components/Summary";
 import SuccessfulPage from "./components/SuccessfulPage";
