@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  /* min-width: 320px; */
+  min-height: 100vh;
+  background-color: rgb(220, 227, 245);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
