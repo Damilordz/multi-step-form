@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         "sidebar-desktop": "url('/assets/images/bg-sidebar-desktop.svg')",
+        "sidebar-mobile": "url('/assets/images/bg-sidebar-mobile.svg')",
       },
       colors: {
         primary: {

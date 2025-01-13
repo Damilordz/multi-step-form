@@ -2,9 +2,12 @@ import PropTypes from "prop-types";
 
 const Buttons = ({ prevStep, nextStep, currentIndex, subnitForm }) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between bg-neutral-alabaster p-4 lg:p-0 w-full">
       {currentIndex > 0 && (
-        <button onClick={prevStep} className="text-gray-400 font-semibold hover:text-gray-800">
+        <button
+          onClick={prevStep}
+          className="text-gray-400 font-semibold hover:text-gray-800"
+        >
           Go Back
         </button>
       )}

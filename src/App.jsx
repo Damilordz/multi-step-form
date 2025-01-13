@@ -3,7 +3,6 @@ import { useState, useContext } from "react";
 import { PlanProvider } from "./context/PlanContext";
 import IndexContext from "./context/IndexContext";
 import Navigation from "./components/Navigation";
-import Title from "./components/Title";
 import Buttons from "./components/Buttons";
 import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
@@ -19,7 +18,7 @@ const pageData = [
   },
   {
     name: "Select Plan",
-    title: "Select a Plan",
+    title: "Select your Plan",
     description: "You have the option of monthly or yearly billing.",
   },
   {
@@ -81,39 +80,43 @@ function App() {
 
   return (
     <PlanProvider>
-      <div className="flex gap-20 pr-20 items-center h-[600px] w-[950px] bg-neutral-alabaster p-4 rounded-2xl shadow-lg">
+      <div className="h-screen w-screen flex lg:flex-row flex-col lg:gap-20 lg:pr-20 items-center lg:h-[600px] lg:w-[950px] lg:bg-neutral-alabaster lg:p-4 lg:rounded-2xl lg:shadow-lg">
         <Navigation pageData={pageData} currentIndex={currentIndex} />
-        <div className="h-full pt-8 pb-6 flex flex-col gap-6 flex-grow max-w-[500px]">
-          {!isSubmitted && (
-            <Title
-              title={pageData[currentIndex].title}
-              description={pageData[currentIndex].description}
-            />
-          )}
-          {currentIndex === 0 && (
-            <PersonalInfo
-              handleOnChange={handleOnChange}
-              formValidated={formValidated}
-              isNavbutton={isNavbutton}
-              formData={formData}
-            />
-          )}
-          {currentIndex === 1 && <SelectPlan />}
-          {currentIndex === 2 && (
-            <AddOns
-              handleAddOns={handleAddOns}
-              addOnsData={addOnsData}
-              selectedAddOns={selectedAddOns}
-            />
-          )}
-          {currentIndex === 3 && !isSubmitted && (
-            <Summary
-              addOnsData={addOnsData}
-              selectedAddOns={selectedAddOns}
-              updateIndex={updateIndex}
-            />
-          )}
-          {isSubmitted && <SuccessfulPage />}
+        <div className="h-full lg:pt-8 lg:pb-4 flex flex-col gap-3 lg:gap-6 justify-between items-center flex-grow w-screen mt-[-80px] lg:mt-0">
+          <div className="p-4 lg:p-0 flex-grow w-full sm:w-3/4 lg:w-full">
+            {currentIndex === 0 && (
+              <PersonalInfo
+                handleOnChange={handleOnChange}
+                formValidated={formValidated}
+                isNavbutton={isNavbutton}
+                formData={formData}
+                pageData={pageData}
+                currentIndex={currentIndex}
+              />
+            )}
+            {currentIndex === 1 && (
+              <SelectPlan pageData={pageData} currentIndex={currentIndex} />
+            )}
+            {currentIndex === 2 && (
+              <AddOns
+                handleAddOns={handleAddOns}
+                addOnsData={addOnsData}
+                selectedAddOns={selectedAddOns}
+                pageData={pageData}
+                currentIndex={currentIndex}
+              />
+            )}
+            {currentIndex === 3 && !isSubmitted && (
+              <Summary
+                addOnsData={addOnsData}
+                selectedAddOns={selectedAddOns}
+                updateIndex={updateIndex}
+                pageData={pageData}
+                currentIndex={currentIndex}
+              />
+            )}
+            {isSubmitted && <SuccessfulPage />}
+          </div>
           {!isSubmitted && (
             <Buttons
               currentIndex={currentIndex}
