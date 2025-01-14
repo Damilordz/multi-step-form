@@ -28,7 +28,8 @@ export const IndexProvider = ({ children }) => {
     const { name, email, phone } = formData;
     const nameValid = name.trim() !== "";
     const emailValid = /^\S+@\S+\.\S+$/.test(email);
-    const phoneValid = /^\d+$/.test(phone.replace(/\s/g, ""));
+    const phoneDigits = phone.replace(/\s/g, "");
+    const phoneValid = /^\d+$/.test(phoneDigits) && phoneDigits.length >= 10;
     const valid = nameValid && emailValid && phoneValid;
     setFormValidated(valid);
     return valid;
