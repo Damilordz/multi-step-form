@@ -7,7 +7,7 @@ const Navigation = ({ pageData, currentIndex }) => {
       : "null";
 
   return (
-    <div className="flex flex-row justify-center gap-3 p-4 bg-sidebar-mobile bg-no-repeat bg-cover bg-center min-h-[150px] max-h-[150px] w-screen lg:bg-sidebar-desktop lg:flex-col lg:gap-7 lg:p-8 lg:justify-start lg:rounded-lg lg:shadow-lg lg:w-[260px] lg:min-w-[260px] lg:max-w-[260px] lg:min-h-[568px] lg:max-h-[568px]">
+    <div className="flex flex-row justify-center gap-3 p-4 bg-sidebar-mobile bg-no-repeat bg-cover bg-center min-h-[170px] max-h-[200px] w-screen lg:bg-sidebar-desktop lg:flex-col lg:gap-7 lg:p-8 lg:justify-start lg:rounded-lg lg:shadow-lg lg:w-[260px] lg:min-w-[260px] lg:max-w-[260px] lg:min-h-[568px] lg:max-h-[568px]">
       {pageData.map((data, index) => (
         <div className="flex gap-3 mt-4 lg:mt-0" key={index}>
           <div

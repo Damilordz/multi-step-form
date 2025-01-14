@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import IndexContext from "../context/IndexContext";
 
-const Buttons = ({ prevStep, nextStep, currentIndex, subnitForm }) => {
+const Buttons = () => {
+  const { prevStep, nextStep, currentIndex, subnitForm } =
+    useContext(IndexContext);
+    
   return (
     <div className="flex justify-between bg-neutral-alabaster p-4 lg:p-0 w-full">
       {currentIndex > 0 && (

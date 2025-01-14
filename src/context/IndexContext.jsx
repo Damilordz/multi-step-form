@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 const IndexContext = createContext();
 
 export const IndexProvider = ({ children }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(true);
   const [isNavbutton, setIsNavbutton] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -24,20 +24,20 @@ export const IndexProvider = ({ children }) => {
     validateForm();
   };
 
-  // Validate form
   const validateForm = () => {
-    if (formData.name && formData.email && formData.phone) {
-      setFormValidated(true);
-    } else {
-      setFormValidated(false);
-    }
+    const { name, email, phone } = formData;
+    const nameValid = name.trim() !== "";
+    const emailValid = /^\S+@\S+\.\S+$/.test(email);
+    const phoneValid = /^\d+$/.test(phone.replace(/\s/g, ""));
+    const valid = nameValid && emailValid && phoneValid;
+    setFormValidated(valid);
+    return valid;
   };
 
-  // Go to next step
   const nextStep = () => {
-    validateForm();
-    setIsNavbutton(true);
-    if (!formValidated) {
+    // Run full validation before proceeding
+    if (!validateForm()) {
+      setIsNavbutton(true); // triggers error messages in PersonalInfo
       return;
     }
     setCurrentIndex(currentIndex + 1);

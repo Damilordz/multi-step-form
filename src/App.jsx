@@ -3,13 +3,13 @@ import { useState, useContext } from "react";
 import { PlanProvider } from "./context/PlanContext";
 import IndexContext from "./context/IndexContext";
 import Navigation from "./components/Navigation";
-import Buttons from "./components/Buttons";
 import PersonalInfo from "./components/PersonalInfo";
 import SelectPlan from "./components/SelectPlan";
 import AddOns from "./components/AddOns";
 import Summary from "./components/Summary";
 import SuccessfulPage from "./components/SuccessfulPage";
 
+// Page data
 const pageData = [
   {
     name: "Your Info",
@@ -33,6 +33,7 @@ const pageData = [
   },
 ];
 
+// Add-ons data
 const addOnsData = [
   {
     name: "Online service",
@@ -59,9 +60,6 @@ function App() {
 
   const {
     currentIndex,
-    nextStep,
-    prevStep,
-    subnitForm,
     updateIndex,
     isSubmitted,
     handleOnChange,
@@ -70,6 +68,7 @@ function App() {
     formData,
   } = useContext(IndexContext);
 
+  // handle add-ons
   const handleAddOns = (index) => {
     if (selectedAddOns.includes(index)) {
       setSelectedAddOns(selectedAddOns.filter((item) => item !== index));
@@ -80,51 +79,48 @@ function App() {
 
   return (
     <PlanProvider>
-      <div className="h-screen w-screen flex lg:flex-row flex-col lg:gap-20 lg:pr-20 items-center lg:h-[600px] lg:w-[950px] lg:bg-neutral-alabaster lg:p-4 lg:rounded-2xl lg:shadow-lg">
+      <div className="h-screen flex flex-col lg:flex-row items-center lg:gap-20 lg:pr-20 lg:h-[600px] lg:w-[950px] lg:bg-neutral-alabaster lg:p-4 lg:rounded-2xl lg:shadow-lg">
         <Navigation pageData={pageData} currentIndex={currentIndex} />
-        <div className="h-full lg:pt-8 lg:pb-4 flex flex-col gap-3 lg:gap-6 justify-between items-center flex-grow w-screen mt-[-80px] lg:mt-0">
-          <div className="p-4 lg:p-0 flex-grow w-full sm:w-3/4 lg:w-full">
-            {currentIndex === 0 && (
-              <PersonalInfo
-                handleOnChange={handleOnChange}
-                formValidated={formValidated}
-                isNavbutton={isNavbutton}
-                formData={formData}
-                pageData={pageData}
-                currentIndex={currentIndex}
-              />
-            )}
-            {currentIndex === 1 && (
-              <SelectPlan pageData={pageData} currentIndex={currentIndex} />
-            )}
-            {currentIndex === 2 && (
-              <AddOns
-                handleAddOns={handleAddOns}
-                addOnsData={addOnsData}
-                selectedAddOns={selectedAddOns}
-                pageData={pageData}
-                currentIndex={currentIndex}
-              />
-            )}
-            {currentIndex === 3 && !isSubmitted && (
-              <Summary
-                addOnsData={addOnsData}
-                selectedAddOns={selectedAddOns}
-                updateIndex={updateIndex}
-                pageData={pageData}
-                currentIndex={currentIndex}
-              />
-            )}
-            {isSubmitted && <SuccessfulPage />}
-          </div>
-          {!isSubmitted && (
-            <Buttons
+        <div className="mt-[-70px] flex justify-center lg:mt-0 lg:h-full flex-grow w-full lg:w-full">
+          {currentIndex === 0 && (
+            <PersonalInfo
+              handleOnChange={handleOnChange}
+              formValidated={formValidated}
+              isNavbutton={isNavbutton}
+              formData={formData}
+              pageData={pageData}
               currentIndex={currentIndex}
-              nextStep={nextStep}
-              prevStep={prevStep}
-              subnitForm={subnitForm}
+              isSubmitted={isSubmitted}
             />
           )}
+          {currentIndex === 1 && (
+            <SelectPlan
+              pageData={pageData}
+              currentIndex={currentIndex}
+              isSubmitted={isSubmitted}
+            />
+          )}
+          {currentIndex === 2 && (
+            <AddOns
+              handleAddOns={handleAddOns}
+              addOnsData={addOnsData}
+              selectedAddOns={selectedAddOns}
+              pageData={pageData}
+              currentIndex={currentIndex}
+              isSubmitted={isSubmitted}
+            />
+          )}
+          {currentIndex === 3 && !isSubmitted && (
+            <Summary
+              addOnsData={addOnsData}
+              selectedAddOns={selectedAddOns}
+              updateIndex={updateIndex}
+              pageData={pageData}
+              currentIndex={currentIndex}
+              isSubmitted={isSubmitted}
+            />
+          )}
+          {isSubmitted && <SuccessfulPage />}
         </div>
       </div>
     </PlanProvider>
