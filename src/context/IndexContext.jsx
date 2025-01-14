@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 const IndexContext = createContext();
 
 export const IndexProvider = ({ children }) => {
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isNavbutton, setIsNavbutton] = useState(false);
   const [formData, setFormData] = useState({
     name: "",

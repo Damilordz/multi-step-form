@@ -56,7 +56,7 @@ const addOnsData = [
 ];
 
 function App() {
-  const [selectedAddOns, setSelectedAddOns] = useState([0, 1]);
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const {
     currentIndex,

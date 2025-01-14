@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import PropTypes from "prop-types";
 import IndexContext from "../context/IndexContext";
 
 const Buttons = () => {
@@ -35,12 +34,6 @@ const Buttons = () => {
       )}
     </div>
   );
-};
-Buttons.propTypes = {
-  prevStep: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
-  currentIndex: PropTypes.number.isRequired,
-  subnitForm: PropTypes.func.isRequired,
 };
 
 export default Buttons;
